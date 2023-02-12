@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'나는 남자다' TEST</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4056206202474378"
+     crossorigin="anonymous"></script>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4056206202474378"
+     crossorigin="anonymous"></script>
+</head>
+<ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-vd5fMkL4d7Y6ZFp8"
+data-ad-width = "320"
+data-ad-height = "100"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> 
+<body>
+    <div class="header">
+        <h1>나는 남자다! 테스트</h1>
+        <h3> 나의 남성적인 매력은?</h3>
+    </div>
+
+    <div class="container">
+    <div id="upload-area" class="area">
+        <span class="guide-image"> &#128247;</span>
+        <br/>
+        <span>사진을 올려놓거나 눌러서 업로드해주세요</span>
+        <input id="upload-input" style="display: none;" type="file" accept="image/*" onchange="readFile(this.files[0]);"/>
+    </div>
+
+    <div id="share-area" class="area">
+        <h3> 사진 1장을 인공지능 AI로 분석<br> 나의 '남성성' 테스트<br> 남성이여 도전하라</h3>
+        <div class="addthis_inline_share_toolbox"></div>
+    </div>
+    
+    <div id="loading-area" class="area" style="display: none;">
+        <span class="guide-image"><img src="clock-806.gif"  style="width: 100%; height: 100%;" ></span>
+    <br />
+    <span> 인공지능 모델을 불러오는 중입니다...</span>  
+    </div>
+    <div id="result-area" class="area" style="display: none;">
+        <img id="upload-image" src="#" alt="your image" border >
+    <div id='label-container'></div>
+        </div>
+        <div id="retry-area" class="area" style="display: none;">
+            <span> 다른 사진으로 테스트하려면 눌러주세요!</span>
+        </div>
+    </div>
+
+    <ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-vd5fMkL4d7Y6ZFp8"
+data-ad-width = "320"
+data-ad-height = "100"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> 
+
+    <div id="disqus_thread"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        
+        const URL = "https://teachablemachine.withgoogle.com/models/hDS8K_3mZ/";
+    
+        let model, labelContainer, maxPredictions;
+        let isModelReady = false;
+        let input = document.getElementById("upload-input");
+        let image = document.getElementById("upload-image");
+        let uploadArea = document.getElementById("upload-area");
+        let shareArea = document.getElementById("share-area");
+        let loadingArea = document.getElementById("loading-area");
+        let resultArea = document.getElementById("result-area");
+        let retryArea = document.getElementById("retry-area");
+        
+        const reader = new FileReader();
+
+        async function readFile(file){
+            uploadArea.style.display = "none";
+            shareArea.style.display = "none";
+            if (isModelReady == false){
+            loadingArea.style.display = "block";
+            await init();
+            }
+            reader.readAsDataURL(file);
+        }
+        
+        reader.onload = async function(event){
+            await image.setAttribute('src', event.target.result);
+            await predict();
+            loadingArea.style.display = "none";
+            resultArea.style.display = "block";
+            retryArea.style.display = "block";
+        };
+        
+        uploadArea.onclick = function(){
+            input.click();
+        }
+
+        uploadArea.ondragover = function(event){
+            event.preventDefault();
+        }
+
+        uploadArea.ondrop = function(event){
+            event.preventDefault();
+            const file = event.dataTransfer.files[0];
+            readFile(files);
+        }
+
+        retryArea.onclick = function() {
+            retryArea.style.display = "none";
+            resultArea.style.display = "none";
+            uploadArea.style.display ="block";
+            shareArea.style.display = "block"
+            input.value = "";
+        }
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+    
+           
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+        
+            for (let i = 0; i < maxPredictions + 1; i++) {
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+    
+              
+        async function predict() {
+            const prediction = await model.predict(image);
+
+        prediction.sort((x,y)=>y.probability - x.probability);
+
+        switch (prediction[0].className){
+            case "변강쇠":
+                labelContainer.childNodes[0].innerHTML = "<h3>당신은 특히 성적 에너지에 특화되어 있는 사람입니다. 낮과 밤을 가리지 않고 올라오는 성적 에너지로 여자친구 혹은 많은 여성을 만족시킬 힘이 있습니다. 하지만 현실은 성적 에너지를 억압하고 있기 때문에 피곤하고 삶이 만족스럽지 않습니다. 그로 인해서 제대로 된 상대를 만나고 싶은 욕망에 사로잡힐 때가 많습니다. 내면의 강한 에너지를 해소하는 방법은 적극적으로 연애 활동을 하던지 아니면 스스로 위로하는 방법을 택하는 편입니다.  혹시 지금 성생활에 대한 불만족도가 높다면 좀 더 연애 활동에 적극적일 필요가 있습니다. 여러분의 강한 내면 에너지는 분명 잘 활용한다면 여성에게 큰 매력으로 작용할수 있습니다. 그러한 내면의 에너지를 잘 활용할 방법을 연구해보세요. 짧은 시간에 사람 자체가 달라질수 있습니다. </h3>";
+                break;
+            case "카사노바":
+                labelContainer.childNodes[0].innerHTML = "<h3>당신은 만족이란 단어를 여성에게 선사할수 있는 아주 귀한 사람입니다. 많은 여성들은 당신을 원하고 있고 그럴 능력도 가지고 있지만 아직은 그 매력들이 내면에 꽁꽁 숨겨져 있습니다. 본인 스스로 여성보다 낮은 자리에 위치해 있지만 결국 여러분은 여성보다 높은 위치에 오르게 될 가능성이 높습니다. 집에만 있는다고 기회가 오지 않습니다. 외부에서 많은 활동을 통해 여성을 만나는 횟수를 늘리고 사회적 매력을 늘리세요. 당신은 진정으로 많은 여성에게 진정한 만족을 줄수 있는 이 시대에 꼭 필요한 남성입니다.</h3>";
+                break;  
+            case "나폴레옹":
+                labelContainer.childNodes[0].innerHTML = "<h3> 당신은 전생에 세상을 정복하고 싶은 강한 욕구에 사로잡힌 나폴레옹을 닮았습니다. 막대한 정복욕은 세상의 수많은 이성을 향해 있고 그들을 역시 어떻게 정복할까 호시탐탐 노리고 있는 내적 욕구가 있습니다. 다만 다양한 현실적인 제약과 상황으로 인해 그 욕망이 충족되지 못하는 경우 큰 좌절감과 절망감을 가슴 한 구석에 안고 살아가게 됩니다. 이걸 해결하는 방법은 외면과 내면을 동시에 가꾸어서 현실과 이상의 차를 좁히는 수밖에 없습니다. 강렬한 욕망만큼 이상을 현실로 실현 시킬 능력을 가진 사람입니다. 당신 노력 여하에 따라 수많은 이성을 정복시킬 힘을 지니고 있습니다. 현실에서 노력을 게을리 하지 마십시오.</h3>";
+                break; 
+            case "앤디워홀":
+                labelContainer.childNodes[0].innerHTML = "<h3>당신은 섹시한 남자입니다. 당신은 이미 여러방면에서 섹시한 모습을 지니고 있습니다. 당신의 섹시함이란 육체적인 부분에서 오는 것도 있지만 내면에서 나오는 경우가 많습니다. 여러분의 독특한 분위기는 많은 이성에게 호기심을 느끼게 하고 그로 인해 당신을 점점 알아가고 싶게 만듭니다. 이러한 호기심을 바탕으로 주변에 많은 이성을 궁금증을 일으키고 그것이 바탕이 되어 미스테리한 성적 매력을 어필할수 있습니다. 최고의 성적 어필의 KEY 포인트는 '은근함' 입니다. 여러분은 이러한 '은근함'을 표현할수 있는 장점이 있습니다. 언제듯 신비한 표정과 종잡을수 없는 사고로 인해서 주변 이성들에게 신선함을 줍니다. 그로 인해 주변 이성들은 여러분들과의 하룻밤이 어떨지 상상하게 만드는 능력이 있습니다.</h3>";
+                break;
+            case "퐁퐁남":
+                labelContainer.childNodes[0].innerHTML = "<h3> 당신은 호구를 뛰어넘는 만인 평등의 정신을 가지고 있습니다. 호혜로운 마음가짐으로 어떤 상황에서도 여성에 대한 존경심과 배려가 몸에 베어 있습니다. 낮은 위치를 전혀 꺼리지 않으며 이러한 성품으로 인해 많은 여성들이 혼기에 들어섰을 경우 포근한 안식처 같은 여러분을 찾게 됩니다. 당신은 그들을 받아들일 수 있는 넓은 마음과 넉넉한 재산을 가지고 있는 경우가 많습니다. 방황하는 여성들에게 편안함과 다시 세상으로 나가 뛰어 놀수 있는 여력을 제공합니다. 참으로 고귀한 사람입니다.  </h3>";
+                break;
+            case "호구":
+                labelContainer.childNodes[0].innerHTML = "<h3> 호랑이 '호'자에 입'구'를 줄여서 '호구'라고 부르며, 매우 위험한 지경을 의미합니다. 그렇듯 당신은 '매우 위험한 상황'에서도 제대로 남에게 배풀기 위해서 태어난 사람입니다. 그런 당신을 여성이 귀신같이 알아차리고 당신의 피를 빨아먹습니다. 당신은 피가 빨리는줄도 모르고 돈, 시간, 노동을 기꺼이 그녀를 위해서 내어주는 당신은 이 시대에 꼭 필요한 사람입니다. 호구는 널리 사람을 이롭게 한다는 홍익 인간의 이념처럼 많은 여성에게 호혜로운 정신을 베풉니다. 당신의 희생으로 상대 여성은 더욱 풍족한 삶을 만끽하며 더 멋진 남성을 만날 기회를 얻게 됩니다. 진정 남을 위해 사는 당신을 찬양합니다 </h3>";
+                break;
+            default:
+                labelContainer.childNodes[0].innerHTML = "<h3> 오류 발생</h3>";
+            break;
+        }    
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + Math.round(prediction[i].probability *100) + "%";
+                labelContainer.childNodes[i+1].innerHTML = classPrediction;
+            }
+            isModelReady = true;
+        }
+    </script>
+ <div id="disqus_thread"></div>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4056206202474378"
+ crossorigin="anonymous"></script>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://dongmulsang-teseuteu-frlrmr45hc.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>   
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63b03fc3e02db77d">
+</script>
+
+
+</body>
+</html>
