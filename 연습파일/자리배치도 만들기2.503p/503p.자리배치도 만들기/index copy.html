@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var memNum = prompt("입장객 숫자를 입력하세요");
+        var colNum = prompt("줄 당 사람 숫자를 입력하세요");
+       
+        if(memNum % colNum === 0)
+            var rowNum = parseInt(memNum / colNum); //행의 수를구함
+        else
+            var rowNum = parseInt(memNum / colNum) + 1; //parseInt : 소수점 떼고 정수값만 리턴
+        document.write(rowNum); //행의 갯수 표시
+
+         for(i = 1; i < memNum; i++){
+            document.write(i);
+                for(j=1; j >= colNum; ){
+                   document.write("<")
+                }
+         }
+     
+    </script>
+    
+</body>
+</html>
+
+

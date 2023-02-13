@@ -8,6 +8,7 @@
 </head>
 <body>
 	<button id="change">글자색 바꾸기</button>	
+  <button id="change2">찐한 글자색 바꾸기</button>	
 	<p>Reprehenderit tempor do quis sunt eu et exercitation deserunt. Laboris adipisicing est sint aliquip nulla pariatur velit irure elit qui id. Dolore aliquip dolore eu ut irure sint Lorem reprehenderit velit. Duis veniam irure cillum anim excepteur culpa pariatur sunt esse. Eu nulla commodo velit ex id dolore incididunt mollit incididunt nisi labore culpa qui ea. Commodo veniam veniam in ipsum ad minim occaecat qui pariatur adipisicing laborum quis.</p>
 	
 	<script>
@@ -16,9 +17,15 @@
     changeBttn.onclick = changeColor;
     
 		function changeColor() {
-      document.querySelector("p").style.color = "#f00";
+      document.querySelector("p").style.color = "#940";
     }
    
+     var changeBttn2 = document.querySelector("#change2");
+     changeBttn2.onclick = changeColor2;
+
+     function changeColor2() {
+      document.querySelector("p").style.color = "#109";
+    }
     // 방법 2 : 웹 요소를 따로 변수로 만들지 않고 사용
     // document.querySelector("#change").onclick = changeColor;
 

@@ -7,25 +7,64 @@
 </head>
 <div id="container" >
 <body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
     <nav>
         <ul>
-         <li><a class="menuLink" href="https://www.isaemangeum.co.kr/">새만금홍보관</a> </li>     
-         <li><a class="menuLink" href="https://www.isaemangeum.co.kr/bbs/data/infoview.php">새만금홍보관 수위계</a> </li>
-         <li><a class="menuLink" href="http://rawris-am.ekr.or.kr/wrms/m/m_list?t=w">로리스 수위계</a> </li>
-         <li><a class="menuLink" href="https://blog.naver.com/hylee01_89">이현주 블로그</a> </li></li><br>
-         <li><a class="menuLink" href="https://blog.naver.com/hylee01_89">서바이벌자본주의</a> </li></li>
-         <li><a class="menuLink" href="https://blog.naver.com/hylee01_89">구글 애드센스</a> </li></li>
-         <li><a class="menuLink" href="https://blog.naver.com/hylee01_89">카카오뷰 창작센터</a> </li></li>
-         <li><a class="menuLink" href="https://blog.naver.com/hylee01_89">카카오애드핏</a> </li></li>
+         <li><a class="menuLink" id="#sa" onclick="alert('새만금수위계')" href="https://www.isaemangeum.co.kr/">새만금홍보관</a> </li>     
+         <li><a class="menuLink"  href="https://www.isaemangeum.co.kr/bbs/data/infoview.php">새만금홍보관 수위계</a> </li>
+         <li><a class="menuLink" onclick="alert('로리스 수위계')" href="http://rawris-am.ekr.or.kr/wrms/m/m_list?t=w">로리스 수위계</a> </li>
+         <li><a class="menuLink" onclick="alert('체험단은 적당히!')" href="https://blog.naver.com/hylee01_89">이현주 블로그</a> </li></li><br>
+         <li><a class="menuLink" onclick="alert('경배하시오')" href="https://blog.naver.com/misicipi/222789311305">서바이벌자본주의</a> </li></li>
+         <li><a class="menuLink" onclick="alert('사이클이 다가온다!')" href="https://www.google.co.kr/search?q=ISC+%EC%A3%BC%EA%B0%80&sxsrf=AJOqlzUOlqFfQNcUDYzRm1aUYL3o8dBf-g%3A1676297018840&ei=OkPqY9baMpnh2roP34OhuAg&ved=0ahUKEwjW3-GC1ZL9AhWZsFYBHd9BCIcQ4dUDCA8&uact=5&oq=ISC+%EC%A3%BC%EA%B0%80&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIQCAAQgAQQsQMQgwEQRhD6ATIHCAAQHhDxBDoICAAQgAQQsQM6CwgAEIAEELEDEIMBOgoIABCxAxCDARBDOhwILhCxAxDHARDRAxCoAxDSAxBDEIsDEKgDENIDOgcIABCxAxBDOgQIABBDOh0ILhCABBCxAxDHARDRAxCoAxDSAxCLAxCoAxDSAzoFCAAQgAQ6FAguEIAEELEDEIMBEJoDEKgDEJsDOg4ILhCABBCxAxCoAxCYAzoHCAAQgAQQCjoHCCMQ6gIQJzoUCC4QgAQQsQMQgwEQqAMQmwMQmgM6DgguEIAEENIDEKEDEKgDOgYIABAIEB5KBAhBGABKBAhGGABQAFiBKmCwK2gIcAF4AIABpAGIAYsPkgEEMC4xNJgBAKABAbABCrgBAsABAQ&sclient=gws-wiz-serp">ISC</a> </li></li>
+         <li><a class="menuLink" onclick="alert('비나이다 비나이다')" href="https://www.google.co.kr/search?q=%EC%85%80%EB%A6%AC%EB%B2%84%EB%A6%AC+%EC%A3%BC%EA%B0%80&sxsrf=AJOqlzXPsMkHGwbqgQ-o7KsTG-isKeIzkw%3A1676297026759&ei=QkPqY-L8Le2k2roP2PWvgAY&ved=0ahUKEwjipcWG1ZL9AhVtklYBHdj6C2AQ4dUDCA8&uact=5&oq=%EC%85%80%EB%A6%AC%EB%B2%84%EB%A6%AC+%EC%A3%BC%EA%B0%80&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIJCAAQQxBGEPoBMgUIABCABDIFCAAQgAQyBAgAEB46EAgAEIAEEBQQhwIQsQMQgwE6IAguEIAEELEDEIMBEMcBENEDEKgDENIDEIsDEKgDENIDOhoILhCABBCxAxCDARCoAxCbAxCLAxCoAxCbAzoICAAQgAQQsQM6CwgAEIAEELEDEIMBOiAILhCABBCxAxCDARDHARDRAxDSAxCoAxCLAxCoAxDSAzoaCC4QgAQQsQMQ1AIQqAMQnQMQiwMQqAMQnQM6IAguEIAEELEDEIMBEKgDENIDEJsDEIsDEKgDENIDEJsDOgoIABCABBAUEIcCOgQIABBDOhEILhCABBDHARDRAxCoAxDSAzoKCAAQgAQQRhD6AUoECEEYAEoECEYYAFAAWPkJYJ8LaABwAXgAgAGfAYgB3g6SAQQwLjE0mAEAoAEBuAECwAEB&sclient=gws-wiz-serp">셀리버리</a> </li></li>
+         <li><a class="menuLink" onclick="alert('???')" href="https://blog.naver.com/hylee01_89">TOMS 코인</a> </li></li>
         </ul>
       </nav>
     <img src="css/jeju.jpg" border="1" width="200" height="200" a=""> <!-- ## 900 X 900 ## -->
-    <p>이건 개인 앱을 만들기 위한 작은 노력<br>
-       관심있는 링크를 하나로 모아서 하나로 관리<br>
-       원하는 모든 것의 링크를 하나로 모으자
-       뭔가 어색하다. 아직은 깃 허브를 쓰는게 상당히 어색하다
+    <p>공모전은 적당히
+       체험단도 적당히
+       할것도 많다
+       <div class=""></div>
     </p>
-
+<script>
+  var linkBttn = document.querySelector("#sa");
+  linkBttn.onclick = 
+</script>
 </div>
 </body>
 </html>

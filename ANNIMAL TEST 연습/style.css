@@ -1,0 +1,101 @@
+
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: ' DoHyeon', sans-serif;
+    color: #A4193D;
+
+
+}
+
+.header{
+    padding: 10px 0;
+    background-color: rgb(219, 204, 204);
+    display : inline ;
+    text-align: center;
+}
+
+
+h1,h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    color : #363636;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+}
+
+.container {
+    background-color:  #FFDFB9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 350px;
+    max-width: 650px;
+    min-height: 400px;
+    padding: 20px 0;
+    margin: 20px auto;
+    border: 1px solid #A4193D;
+    border-radius: 10px;
+}
+
+.area {
+    background-color: white;
+    width: 60%;
+    min-width: 300px;
+    max-width: 600px;
+    border: 2px solid #A4193D;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#upload-area {
+    cursor: pointer;
+}
+
+#retry-area {
+    cursor: pointer;
+    margin-top: 20px;
+}
+#upload-area:hover{
+    background-color: #A4193D;
+    border : 10px double;
+    color : #A4193D;
+}
+
+#retry-area:hover {
+    background-color: #A4193D;
+    border : 10px double;
+    color : #A4193D;
+
+}
+.guide-image {
+    font-size: 120px;
+}
+#upload-image{
+    width: 55%;
+    max-width: 540px;
+}
+#disqus_thread {
+    background-color: #e2ab8b;
+    max-width:  650px;
+    box-sizing: border-box;
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 15px;
+    border: 1px solid #A4193D;
+    border-radius: 10px;
+}
+#share-area {
+    margin-top: 20px;
+}
+
+ul {border :1px solid #222; display : inline-block;}
+/*.sns{ position: relative; display: inline-block; width: auto;  font-size: 14px; font-weight: 500px; color: #333; margin-right: 10px; padding-top: 0px; }*/
+.twitter { background-image: url(./images/icon-twitter.png); background-repeat: no-repeat; display : inline-block; }
+.facebook { background-image: url(./images/icon-facebook.png); background-repeat: no-repeat; display : inline-block; } 
+.kakao { background-image: url(./images/icon-kakao.png); background-repeat: no-repeat; display : inline-block; }

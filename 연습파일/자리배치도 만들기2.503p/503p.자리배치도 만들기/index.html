@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var memNum = prompt("입장객 숫자를 입력하세요");
+        var colNum = prompt("줄 당 사람 숫자를 입력하세요");
+       
+        if(memNum % colNum === 0)
+            var rowNum = parseInt(memNum / colNum);
+        else
+            var rowNum = parseInt(memNum / colNum) + 1;
+        
+        for(i = 1; i < colNum; i++){
+            document.write("<div>");
+            document.write("<h3>" + i + "명</h3>");  
+            for(j = 1; j <= rowNum; j++){
+                document.write("<h3>" + i + "명</h3>");  
+            } 
+        }
+    </script>
+    
+</body>
+</html>
+
+
