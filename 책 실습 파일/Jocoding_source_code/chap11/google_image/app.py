@@ -14,8 +14,8 @@ firstImage = driver.find_element_by_css_selector('#islrg > div.islrc > div:nth-c
 firstImage.click()
 
 for i in range(number):
-    try:
-        time.sleep(interval)
+    try\
+                time.sleep(interval)
         image = driver.find_element_by_css_selector('#Sva75c > div > div > div.pxAole > div.tvh9oe.BIB1wf > c-wiz > div > div.OUZ5W > div.zjoqD > div.qdnLaf.isv-id.b0vFpe > div > a > img')
         imageSrc = image.get_attribute('src')
         urllib.request.urlretrieve(imageSrc, f'{fileName}_{i+1}.jpg')
